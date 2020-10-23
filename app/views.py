@@ -1,28 +1,31 @@
-from django.shortcuts import render
-import os
 import io
+import os
 import pdb
+
 import PIL.Image as Image
 from django.db import models
-
-from rest_framework import generics
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser, FileUploadParser, MultiPartParser, FormParser
+from django.shortcuts import render
+from rest_framework import generics, status
 from rest_framework.generics import GenericAPIView, ListCreateAPIView
 from rest_framework.mixins import ListModelMixin
-from rest_framework.views import APIView
+from rest_framework.parsers import (FileUploadParser, FormParser, JSONParser,
+                                    MultiPartParser)
+from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.serializers import ModelSerializer
+from rest_framework.views import APIView
 
 from .models import TestSerializerModel
 from .serializers import TestSerializer
 
 
 class TestListModelMixin(ListModelMixin, GenericAPIView):
-    pdb.set_trace()
     queryset = TestSerializerModel.objects.all()
     serializer_class = TestSerializer
+    def get(self, request, *args, **kwargs):
+        # breakpoint()
+        print("get method called")
+        return self.list(request, *args, **kwargs)
 
 class ViewTestView(ListModelMixin, GenericAPIView):
     queryset = TestSerializerModel.objects.all()

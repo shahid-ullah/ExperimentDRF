@@ -2,8 +2,8 @@
 
 from django.urls import path
 
-from .views import SnippetList, TestParser, ViewTestView
 from . import views
+from .views import SnippetList, TestParser, ViewTestView
 
 urlpatterns = [
     path('', views.TestListModelMixin.as_view(), name='home'),
