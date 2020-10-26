@@ -9,9 +9,8 @@ class TestSerializerModel(models.Model):
         return self.title
 
 
-class TestViewModel(models.Model):
-    title1 = models.CharField(max_length=100)
-    title2 = models.CharField(max_length=100)
+class ViewTestModel(models.Model):
+    title = models.CharField(max_length=100)
     body = models.TextField()
 
     def __str__(self):

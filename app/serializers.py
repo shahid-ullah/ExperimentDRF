@@ -2,13 +2,13 @@
 
 from rest_framework import serializers
 
-from .models import TestSerializerModel
+from .models import ViewTestModel
 
 # class TestSerializer(serializers.Serializer):
 #     title = serializers.CharField(max_length=100)
 
-class TestSerializer(serializers.ModelSerializer):
+class ViewTestSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = TestSerializerModel
+        model = ViewTestModel
         fields = "__all__"
