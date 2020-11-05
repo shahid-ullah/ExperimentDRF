@@ -6,7 +6,8 @@ from . import views
 # from .views import SnippetList, TestParser, TestView
 
 urlpatterns = [
-    path('<int:pk>/', views.TestView.as_view(), name='home'),
+    path('<int:pk>', views.TestView.as_view(), name='home'),
+    # path('', views.hello_world, name='home'),
     # path('', ViewTestView.as_view(), name='home'),
     # path('', SnippetList.as_view(), name='home'),
     # path('api/', TestParser.as_view(), name='api'),
