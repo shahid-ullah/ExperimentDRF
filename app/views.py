@@ -6,11 +6,11 @@ import PIL.Image as Image
 from django.db import models
 from django.shortcuts import render
 from rest_framework import generics, status
-from rest_framework.decorators import api_view, throttle_classes, schema
+from rest_framework.decorators import api_view, schema, throttle_classes
 from rest_framework.generics import (DestroyAPIView, GenericAPIView,
                                      ListAPIView, ListCreateAPIView,
-                                     RetrieveUpdateDestroyAPIView,
-                                     RetrieveAPIView)
+                                     RetrieveAPIView,
+                                     RetrieveUpdateDestroyAPIView)
 from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
                                    ListModelMixin, RetrieveModelMixin,
                                    UpdateModelMixin)
@@ -27,7 +27,7 @@ from .serializers import ViewTestSerializer
 
 
 class OncePerDayUserThrottle(UserRateThrottle):
-        rate = '10/day'
+    rate = '10/day'
 
 
 @api_view(['GET', 'POST'])
@@ -55,6 +55,7 @@ class TestView(RetrieveUpdateDestroyAPIView):
     title - Title of the page.
 
     """
+
     queryset = ViewTestModel.objects.all()
     serializer_class = ViewTestSerializer
 
