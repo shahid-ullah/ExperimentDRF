@@ -6,5 +6,6 @@ from . import api, views
 
 urlpatterns = [
     path('api/users/', api.ListUsers.as_view(), name='user_list'),
-    path('', views.hello_world, name='home'),
+    path('new/', views.post_new_view, name='post_new'),
+    # path('', views.hello_world, name='home'),
 ]

@@ -1,0 +1,6 @@
+<!-- templates/post_new.html -->
+<form action="" method="post" accept-charset="utf-8">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit">post</button>
+</form>

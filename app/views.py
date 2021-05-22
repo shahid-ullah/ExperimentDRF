@@ -1,35 +1,16 @@
 # app/views.py
-from django.contrib.auth.models import User
-from rest_framework import authentication, permissions
-from rest_framework.decorators import api_view, schema, throttle_classes
-from rest_framework.response import Response
-from rest_framework.throttling import UserRateThrottle
-from rest_framework.views import APIView
+from django.http import HttpResponse
+from django.shortcuts import render
+
+from .forms import post_form
+from .models import Post
 
 
-class ListUsers(APIView):
-    """
-    View to list all users in the system.
-    * Requires token authentication.
-    * Only admin users are able to access this view.
-    """
+def post_new_view(request):
+    form = post_form()
 
-    authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [permissions.IsAdminUser]
-
-    def get(self, request, format=None):
-        """
-        Return a list of all users.
-        """
-        usernames = [user.username for user in User.objects.all()]
-        return Response(usernames)
-
-
-class OncePerDayUserThrottle(UserRateThrottle):
-    rate = '1/day'
-
-
-@api_view()
-@schema(None)
-def hello_world(request):
-    return Response({"message": "Hello, world!"})
+    if request.method == 'POST':
+        form =post_form(request.POST)
+        breakpoint()
+        HttpResponse('post request accepted')
+    return render(request, 'post_new.html', {'form': form})

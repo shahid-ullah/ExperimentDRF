@@ -37,11 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     # third party apps
     'debug_toolbar',
     'rest_framework',
-
+    'django_extensions',
     # local apps
     'app.apps.AppConfig',
 ]
